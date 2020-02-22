@@ -1,10 +1,13 @@
 module.exports = {
+  // plugins: [
+  //   require('postcss-preset-env')
+  // ]
   plugins: {
-    'postcss-cssnext': {
-      browsers: ['last 2 versions', '> 5%']
+    'postcss-preset-env': {
+      stage: 3,
+      features: {
+        'nesting-rules': true
+      }
     }
   }
-  // plugins: [
-  //   require('postcss-cssnext')
-  // ]
 }
