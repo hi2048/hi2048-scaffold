@@ -1,8 +1,8 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    mode: "development",
+module.exports = ({ prod = false } = {}) => ({
+    mode: prod?"production" : "development",
     devtool: "source-map",
     entry: {
         index: './src/index.js',
@@ -38,4 +38,4 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     }
-}
+});

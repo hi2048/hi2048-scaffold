@@ -4,6 +4,7 @@ import { random } from 'hi2048-utils';
 import { ReduxDemo } from './redux';
 import { HookDemo } from './hook';
 import { HocDemo } from './hoc';
+import { Stepper, DynamicNumber } from 'hi2048-design';
 
 function App(props) {
   return (
@@ -21,6 +22,13 @@ function App(props) {
       <hr />
 
       <HocDemo></HocDemo>
+      <hr />
+
+      <Stepper></Stepper>
+      <div style={{ clear: 'both' }}></div>
+      <hr />
+
+      <DynamicNumber></DynamicNumber>
     </div>
   );
 }
