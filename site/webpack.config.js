@@ -36,6 +36,11 @@ module.exports = ({ prod = false } = {}) => ({
         ]
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
+        historyApiFallback: {
+            rewrites: [
+                { from: /index.html\/.*/, to: '/index.html' }
+            ]
+        }
     }
 });
