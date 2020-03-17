@@ -6,14 +6,23 @@ module.exports = ({ prod = false } = {}) => ({
     devtool: "source-map",
     entry: {
         index: './src/index.js',
+        feature: './src/index.js'
     },
     output: {
         filename: '[name].js',
+        publicPath: '/',
         path: path.resolve(__dirname, './dist')
     },
     plugins: [
         new htmlWebpackPlugin({
-            template: './src/index.html'
+            filename: 'index.html',
+            template: './src/template/index.html',
+            chunks: ['index']
+        }),
+        new htmlWebpackPlugin({
+            filename: 'feature.html',
+            template: './src/template/feature.html',
+            chunks: ['feature']
         })
     ],
     module: {
@@ -39,7 +48,10 @@ module.exports = ({ prod = false } = {}) => ({
         contentBase: './dist',
         historyApiFallback: {
             rewrites: [
-                { from: /index.html\/.*/, to: '/index.html' }
+                { from: /^\/index$/, to: '/index.html' },
+                { from: /^\/index\/.*/, to: '/index.html' },
+                { from: /^\/feature$/, to: '/feature.html' },
+                { from: /^\/feature\/.*/, to: '/feature.html' }
             ]
         }
     }
