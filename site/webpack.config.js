@@ -1,7 +1,8 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const apiMocker = require('mocker-api');
 
-module.exports = ({ prod = false } = {}) => ({
+module.exports = ({ prod = false, mock = false } = {}) => ({
     mode: prod?"production" : "development",
     devtool: "source-map",
     entry: {
@@ -46,6 +47,7 @@ module.exports = ({ prod = false } = {}) => ({
     },
     devServer: {
         contentBase: './dist',
+        before: app => mock && apiMocker(app, path.resolve(__dirname, './mock')),
         historyApiFallback: {
             rewrites: [
                 { from: /^\/index$/, to: '/index.html' },

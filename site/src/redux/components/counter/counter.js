@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const CounterComponent = props => {
-  const { count, loading, addAction, addAsyncAction } = props;
+  const { count, loading, addAction, addAsyncAction, fetchAsyncAction } = props;
 
   return (
     <div>
@@ -12,6 +12,7 @@ export const CounterComponent = props => {
       }
       <button onClick={addAction}>Add</button>
       <button onClick={addAsyncAction}>AddAsync</button>
+      <button onClick={fetchAsyncAction}>FetchAsync</button>
     </div>
   )
 }

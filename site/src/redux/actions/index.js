@@ -32,3 +32,12 @@ export const addAsyncAction = () => async dispatch => {
 
   dispatch(setAction(number));
 };
+
+export const fetchAsyncAction = () => async dispatch => {
+  dispatch(loadingAction());
+
+  const response = await fetch('/api/number');
+  const data = await response.json();
+
+  dispatch(setAction(data));
+};
