@@ -5,7 +5,7 @@ import { store } from './store';
 
 export const ReduxDemo = () => (
   <Provider store={store}>
-    Redux Demo!
+    <h4>Redux Demo!</h4>
     <Counter></Counter>
   </Provider>
 );
