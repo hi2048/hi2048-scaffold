@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 export const CounterComponent = props => {
   const { count, loading, addAction, addAsyncAction, fetchAsyncAction } = props;
