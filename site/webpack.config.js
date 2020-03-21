@@ -6,8 +6,9 @@ module.exports = ({ prod = false, mock = false } = {}) => ({
     mode: prod?"production" : "development",
     devtool: "source-map",
     entry: {
-        index: './src/index.js',
-        feature: './src/index.js'
+        index: './src',
+        feature: './src',
+        example: './examples'
     },
     output: {
         filename: '[name].js',
@@ -18,12 +19,20 @@ module.exports = ({ prod = false, mock = false } = {}) => ({
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: './src/template/index.html',
+            title: '',
             chunks: ['index']
         }),
         new htmlWebpackPlugin({
             filename: 'feature.html',
-            template: './src/template/feature.html',
+            template: './src/template/index.html',
+            title: 'Feature',
             chunks: ['feature']
+        }),
+        new htmlWebpackPlugin({
+            filename: 'example.html',
+            template: './src/template/index.html',
+            title: 'Example',
+            chunks: ['example']
         })
     ],
     module: {
